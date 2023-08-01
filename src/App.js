@@ -1,9 +1,9 @@
+import Cards from "./components/cards";
 
 function App() {
   return (
     <div className="App">
-      <h1 className={''}>Hi, Somay</h1>
-
+      <Cards/>
     </div>
   );
 }

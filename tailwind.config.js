@@ -2,9 +2,17 @@
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'background': '#E8F9FD',
+        'primary': '#645CBB',
+        'card': '#A084DC',
+      },
+    },
   },
   plugins: [],
 }
