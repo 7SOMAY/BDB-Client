@@ -2,7 +2,7 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
-const FooterButtons = ({status, title, page, icon}) => {
+const FooterButtons = ({page, setPage, title, icon}) => {
     const [buttonTitle, setButtonTitle] = useState(false);
     const [hover, setHover] = useState(false);
     const navigate = useNavigate();
@@ -11,7 +11,7 @@ const FooterButtons = ({status, title, page, icon}) => {
     return (
         <div className={`flex flex-col items-center justify-center place-items-center text-center text-primary text-xs`}
              onClick={() => {
-                 status(title);
+                 setPage(title);
                  navigate(`/home/${title}`);
              }}>
 

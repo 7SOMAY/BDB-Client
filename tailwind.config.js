@@ -10,6 +10,8 @@ module.exports = {
       colors: {
         'background': '#E8F9FD',
         'primary': '#645CBB',
+        // 'primary': '#E8F9FD',
+        // 'background': '#645CBB',
         'card': '#A084DC',
       },
     },

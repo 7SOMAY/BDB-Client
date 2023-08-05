@@ -1,29 +1,28 @@
-
-
 import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import {useState} from "react";
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 
-const Navbar = ({current, title, profile}) => {
+const Navbar = ({updatePage, title, profile, setAuth}) => {
     const [click, setClick] = useState(false);
     const [clicked, setClicked] = useState(false);
     const [hover, setHover] = useState(false);
+    const navigate = useNavigate();
 
 
     return (
         <div
-            className={'flex flex-row top-0 fixed text-white justify-between w-full py-2 px-4 bg-gradient-to-r from-primary to-[#A084DC] z-10'}>
-            <div className={'text-2xl flex gap-2 items-center top-0 cursor-pointer hover:scale-105 duration-200'}
+            className={'flex flex-row top-0 fixed text-white justify-between w-full cursor-pointer py-2 px-4 bg-gradient-to-r from-primary to-[#A084DC] z-10'}>
+            <div className={'text-2xl flex gap-2 items-center top-0  hover:scale-105 duration-200'}
                  onClick={() => {
-                     // current('Kitchen');
-                     // router.push(`/components`).then(r => console.log(r));
+                     updatePage('home');
+                     navigate('/home');
                  }}>
                 <HomeIcon sx={{
                     fontSize: '2.4rem',
                 }}/>
-                <Link to={'/home'}><h1 className={' font-bold'}>{title}</h1></Link>
+                <h1 className={' font-bold'}>{title}</h1>
             </div>
             <div className={'flex gap-2 items-center duration-500'}
                  onClick={() => {
@@ -54,9 +53,10 @@ const Navbar = ({current, title, profile}) => {
             </div>
             <h6 className={`${clicked ? 'visible' : 'hidden'} text-xs hover:scale-105 duration-100 font-semibold absolute top-16 right-3 text-primary cursor-pointer`}
                 onClick={() => {
-                    // router.push('/components/Login').then(e => console.log(e));
+                    setAuth(false);
+                    navigate('/login');
                 }}>
-                <Link to={'/login'}> Sign out </Link>
+                Sign out
             </h6>
         </div>
     )
