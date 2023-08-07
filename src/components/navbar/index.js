@@ -1,14 +1,18 @@
 import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {logout} from "../../redux/actions/user";
 
 
-const Navbar = ({updatePage, title, profile, setAuth}) => {
+const Navbar = ({updatePage, title, user}) => {
     const [click, setClick] = useState(false);
     const [clicked, setClicked] = useState(false);
     const [hover, setHover] = useState(false);
     const navigate = useNavigate();
+
+    const dispatch = useDispatch();
 
 
     return (
@@ -47,14 +51,13 @@ const Navbar = ({updatePage, title, profile, setAuth}) => {
                         onClick={() => {
                             setClicked(!click);
                         }}>
-                        <h1>{profile}</h1>
+                        <h1>{user.user.name}</h1>
                     </div>
                 </div>
             </div>
             <h6 className={`${clicked ? 'visible' : 'hidden'} text-xs hover:scale-105 duration-100 font-semibold absolute top-16 right-3 text-primary cursor-pointer`}
                 onClick={() => {
-                    setAuth(false);
-                    navigate('/login');
+                    dispatch(logout());
                 }}>
                 Sign out
             </h6>
@@ -63,9 +66,12 @@ const Navbar = ({updatePage, title, profile, setAuth}) => {
 }
 
 Navbar.defaultProps = {
-    current: '/',
     title: 'BDB',
-    profile: 'Profile',
+    user: {
+        user: {
+            name: 'User'
+        }
+    }
 }
 
 export default Navbar

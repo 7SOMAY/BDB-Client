@@ -1,42 +1,69 @@
 import {Routes, Route} from "react-router-dom";
 
 import Home from "../home";
-import Navbar from "../navbar";
-import AnimeshHarshit from "../pages/AnimeshHarshit";
-import DSA from "../pages/DSA";
-import Kitchen from "../pages/Kitchen";
-import DiningHall from "../pages/DiningHall";
-import SainiSomay from "../pages/SainiSomay";
-import FootBar from "../foobar";
-import {useState} from "react";
 import Register from "../auth/Register";
 import Login from "../auth/Login";
+import {ProtectedRoute} from "protected-route-react";
+import LandingPage from "../landing";
+import Kitchen from "../pages/Kitchen";
+import AnimeshHarshit from "../pages/AnimeshHarshit";
+import DSA from "../pages/DSA";
+import SainiSomay from "../pages/SainiSomay";
+import DiningHall from "../pages/DiningHall";
 
+export default function PageRoutes({isAuthenticated = false, user, page}) {
 
-
-
-const location = window.location.pathname;
-const temp = location.replace("/home", "");
-const page = temp.replace("/", "");
-
-export default function PageRoutes() {
-    const [pages, setPages] = useState(page);
-    const [isAuth, setIsAuth] = useState(true);
     return (
-        <>
-            {isAuth && (<Navbar profile={'Somay'} updatePage={setPages} setAuth={setIsAuth}/>)}
-            <Routes>
-                <Route path="/login" element={<Login setAuth={setIsAuth}/>}/>
-                <Route path="/register" element={<Register setAuth={setIsAuth}/>}/>
-                <Route path="/" element={<Home/>}/>
-                <Route path="/home" element={<Home/>}/>
-                <Route path="/home/Kitchen" element={<Kitchen/>}/>
-                <Route path="/home/AnimeshHarshit" element={<AnimeshHarshit/>}/>
-                <Route path="/home/DsaBhaggu" element={<DSA/>}/>
-                <Route path="/home/SainiSomay" element={<SainiSomay/>}/>
-                <Route path="/home/DiningHall" element={<DiningHall/>}/>
-            </Routes>
-            {isAuth && (<FootBar page={pages} setPage={setPages}/>)}
-        </>
+        <Routes>
+            <Route path="/" element={
+                <ProtectedRoute isAuthenticated={!isAuthenticated} redirect={"/home"}>
+                    <LandingPage/>
+                </ProtectedRoute>
+            }/>
+
+            {/*------------------------------Auth--------------------------------------------*/}
+            <Route path="/login" element={
+                <ProtectedRoute isAuthenticated={!isAuthenticated} redirect={`/home`}>
+                    <Login/>
+                </ProtectedRoute>
+            }/>
+            <Route path="/register" element={
+                <ProtectedRoute isAuthenticated={!isAuthenticated} redirect={"/home"}>
+                    <Register/>
+                </ProtectedRoute>
+            }/>
+            {/*------------------------------Auth--------------------------------------------*/}
+
+            <Route path="/home" element={
+                <ProtectedRoute isAuthenticated={isAuthenticated}>
+                    <Home isAuthenticated={isAuthenticated}/>
+                </ProtectedRoute>
+            }/>
+            <Route path="/home/Kitchen" element={
+                <ProtectedRoute isAuthenticated={isAuthenticated}>
+                    <Kitchen/>
+                </ProtectedRoute>
+            }/>
+            <Route path="/home/AnimeshHarshit" element={
+                <ProtectedRoute isAuthenticated={isAuthenticated}>
+                    <AnimeshHarshit/>
+                </ProtectedRoute>
+            }/>
+            <Route path="/home/DsaBhaggu" element={
+                <ProtectedRoute isAuthenticated={isAuthenticated}>
+                    <DSA/>
+                </ProtectedRoute>
+            }/>
+            <Route path="/home/SainiSomay" element={
+                <ProtectedRoute isAuthenticated={isAuthenticated}>
+                    <SainiSomay/>
+                </ProtectedRoute>
+            }/>
+            <Route path="/home/DiningHall" element={
+                <ProtectedRoute isAuthenticated={isAuthenticated}>
+                    <DiningHall/>
+                </ProtectedRoute>
+            }/>
+        </Routes>
     );
 }

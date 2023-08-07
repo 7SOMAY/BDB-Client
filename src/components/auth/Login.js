@@ -1,15 +1,16 @@
 import React, {useState} from 'react';
 import {motion, AnimatePresence} from 'framer-motion';
 import ArrowCircleRightRoundedIcon from '@mui/icons-material/ArrowCircleRightRounded';
-import {useNavigate} from "react-router-dom";
 import {Link} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {login} from "../../redux/actions/user";
 
-const Login = ({setAuth}) => {
+const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [showForm, setShowForm] = useState(true);
-    const navigate = useNavigate();
 
+    const [showForm, setShowForm] = useState(true);
+    const dispatch = useDispatch();
 
 
     const handleUsernameChange = (e) => {
@@ -21,15 +22,9 @@ const Login = ({setAuth}) => {
     };
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Username:', email);
-        console.log('Password:', password);
-        setEmail('');
-        setPassword('');
-        setShowForm(false);
-        navigate('/');
-        setAuth(true);
+        dispatch(login(email, password));
     };
 
     const containerVariants = {
