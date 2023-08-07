@@ -28,6 +28,7 @@ export default function App() {
             dispatch({type: "CLEAR_MESSAGE"});
         }
     }, [error, message, dispatch]);
+
     useEffect(() => {
         dispatch(loadHome());
     }, [dispatch]);
