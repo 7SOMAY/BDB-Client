@@ -19,7 +19,7 @@ export default function App() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (error) {
+        if (error && error !== "Not Logged In") {
             toast.error(error);
             dispatch({type: "CLEAR_ERROR"});
         }
