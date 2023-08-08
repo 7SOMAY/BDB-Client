@@ -53,9 +53,12 @@ const LandingPage = () => {
                     >
                         <p className="text-white text-md sm:text-lg mb-4">
                             Imagine a world where your home responds to your every need, no matter where you are.
-                            Welcome to the future of smart living with the Global Home Automator, a groundbreaking
+                            Welcome to the future of smart living with the Smart Home Automator, a groundbreaking
                             project that empowers you to control your home appliances remotely from anywhere in the
-                            world. Whether you're at work, on vacation, or simply on the go, the Global Home Automator
+                            world.
+                        </p>
+                        <p className="text-white text-md sm:text-lg mb-4">
+                            Whether you're at work, on vacation, or simply on the go, the Smart Home Automator
                             puts the power of your home in the palm of your hand.
                         </p>
                         <div className="flex justify-center mt-8">
