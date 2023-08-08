@@ -24,7 +24,8 @@ const LandingPage = () => {
                     >
                         <p className={'flex text-4xl md:text-5xl flex-col md:flex-row gap-4'}>
                             <span className={'flex items-center justify-center'}>Welcome to</span>
-                            <span className="cursor-pointer font-extrabold border-2 hover:rounded-none duration-200 rounded-2xl p-2 text-white">Home Automator</span>
+                            <span
+                                className="cursor-pointer font-extrabold border-2 hover:rounded-none duration-200 rounded-2xl p-2 text-white">Home Automator</span>
                         </p>
                     </motion.h1>
                 </div>
@@ -51,16 +52,11 @@ const LandingPage = () => {
                         transition={{duration: 0.8, delay: 0.2}}
                     >
                         <p className="text-white text-md sm:text-lg mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Phasellus sit amet turpis fermentum, auctor odio et,
-                            vestibulum nulla. Duis vel ligula at nisl blandit vehicula.
-                            Nulla a efficitur odio, sit amet scelerisque dui.
-                        </p>
-                        <p className="text-white text-md sm:text-lg mb-4">
-                            Vestibulum ac ex quis justo interdum eleifend id vel nulla.
-                            Nunc eget massa sit amet est tempus congue ac ac dolor.
-                            Suspendisse eu felis vel nulla pharetra maximus eget at tortor.
-                            Curabitur suscipit posuere mauris, vel finibus odio.
+                            Imagine a world where your home responds to your every need, no matter where you are.
+                            Welcome to the future of smart living with the Global Home Automator, a groundbreaking
+                            project that empowers you to control your home appliances remotely from anywhere in the
+                            world. Whether you're at work, on vacation, or simply on the go, the Global Home Automator
+                            puts the power of your home in the palm of your hand.
                         </p>
                         <div className="flex justify-center mt-8">
                             <Link
