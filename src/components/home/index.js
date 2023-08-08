@@ -12,7 +12,7 @@ const Home = () => {
     const arr = Array.from({length: numberOfCards});
 
     return (
-        <div className="sm:p-6">
+        <div className="py-24 sm:p-6">
             {
                 isLoading ?
                     (<>
