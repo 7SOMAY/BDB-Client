@@ -13,7 +13,7 @@ const Home = () => {
     return (
         <div className="py-24 sm:p-6">
             {
-                isLoading ?
+                isLoading && numberOfCards?
                     (<>
                         <div className="flex flex-wrap justify-center gap-4">
                             {arr && arr.map((_, index) => (
