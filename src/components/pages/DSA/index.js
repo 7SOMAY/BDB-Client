@@ -1,6 +1,6 @@
 const DSA = () => {
     return (
-        <div>
+        <div className={'py-20'}>
             <h1>DSA Bhaggu</h1>
         </div>
     )

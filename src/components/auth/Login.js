@@ -42,7 +42,7 @@ const Login = () => {
 
     return (
         <div
-            className="flex text-sm absolute font-semibold justify-center items-center h-screen w-screen bg-gradient-to-r from-primary to-[#A084DC] font-sans z-50">
+            className="flex text-sm font-semibold justify-center items-center h-screen w-screen bg-gradient-to-r from-primary to-[#A084DC] font-sans z-50">
             <Logo path={'/'}/>
             <AnimatePresence>z
                 <motion.div

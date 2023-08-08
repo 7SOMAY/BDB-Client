@@ -46,7 +46,7 @@ const Register = () => {
 
     return (
         <div
-            className="flex justify-center absolute text-sm font-semibold items-center h-screen w-screen bg-gradient-to-r from-primary to-[#A084DC] font-sans z-50">
+            className="flex justify-center text-sm font-semibold items-center h-screen w-screen bg-gradient-to-r from-primary to-[#A084DC] font-sans z-50">
             <Logo path={'/'}/>
             <AnimatePresence>
                 <motion.div

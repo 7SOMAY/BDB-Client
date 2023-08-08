@@ -1,6 +1,6 @@
 const SainiSomay = () => {
     return (
-        <div>
+        <div className={'py-20'}>
             <h1>Saini Somay</h1>
         </div>
     )
