@@ -35,7 +35,7 @@ export default function PageRoutes({isAuthenticated = false, user, page}) {
                 </ProtectedRoute>
             }/>
             {/*------------------------------Auth--------------------------------------------*/}
-            <div className="py-24">
+            {/*<div className="py-24">*/}
                 <Route path="/home" element={
                     <ProtectedRoute isAuthenticated={isAuthenticated}>
                         <Home isAuthenticated={isAuthenticated}/>
@@ -76,7 +76,7 @@ export default function PageRoutes({isAuthenticated = false, user, page}) {
                         <DiningHall/>
                     </ProtectedRoute>
                 }/>
-            </div>
+            {/*</div>*/}
         </Routes>
     )
         ;

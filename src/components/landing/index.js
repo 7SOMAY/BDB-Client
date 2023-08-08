@@ -7,7 +7,7 @@ import Logo from "../home/Logo";
 const LandingPage = () => {
     return (
         <div
-            className="min-h-screen flex items-center w-screen bg-gradient-to-r from-[#645CBB] to-[#A084DC] py-20 px-4 sm:px-6 lg:px-8">
+            className="min-h-screen absolute flex items-center w-screen bg-gradient-to-r from-[#645CBB] to-[#A084DC] py-20 px-4 sm:px-6 lg:px-8">
             <Logo path={'/'}/>
             <motion.div
                 initial={{opacity: 0, y: 20}}
