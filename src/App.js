@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import Navbar from "./components/navbar";
 import FootBar from "./components/foobar";
 import toast, {Toaster} from "react-hot-toast";
-import {loadHome} from "./redux/actions/user";
+import {loadAllUsers, loadHome} from "./redux/actions/user";
 
 
 // const location = window.location.pathname;
@@ -31,7 +31,8 @@ export default function App() {
 
     useEffect(() => {
         dispatch(loadHome());
-    }, [dispatch]);
+        dispatch(loadAllUsers());
+    }, [dispatch,user]);
 
     return (
         <Router>

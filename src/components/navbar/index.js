@@ -1,33 +1,19 @@
-import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import {useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {logout} from "../../redux/actions/user";
+import {useState} from "react";
+import ProfileDropdown from "./ProfileDropdown";
+import Logo from "../home/Logo";
 
 
 const Navbar = ({updatePage, title, user}) => {
     const [click, setClick] = useState(false);
     const [clicked, setClicked] = useState(false);
     const [hover, setHover] = useState(false);
-    const navigate = useNavigate();
-
-    const dispatch = useDispatch();
-
+    const [toggle, setToggle] = useState(false);
 
     return (
         <div
             className={'flex flex-row top-0 fixed text-white justify-between w-full cursor-pointer py-2 px-4 bg-gradient-to-r from-primary to-[#A084DC] z-10'}>
-            <div className={'text-2xl flex gap-2 items-center top-0  hover:scale-105 duration-200'}
-                 onClick={() => {
-                     updatePage('home');
-                     navigate('/home');
-                 }}>
-                <HomeIcon sx={{
-                    fontSize: '2.4rem',
-                }}/>
-                <h1 className={' font-bold'}>{title}</h1>
-            </div>
+            <div onClick={() => updatePage('home')}><Logo path={'/home'}/></div>
             <div className={'flex gap-2 items-center duration-500'}
                  onClick={() => {
                      setClick(!click);
@@ -50,17 +36,14 @@ const Navbar = ({updatePage, title, user}) => {
                         className={`text-md duration-300 font-bold ${hover ? 'opacity-100' : 'opacity-0'} cursor-pointer`}
                         onClick={() => {
                             setClicked(!click);
+                            setToggle(!toggle);
                         }}>
-                        <h1>{user.user.name}</h1>
+                        <h1 className={'capitalize'}>{user.user.name}</h1>
                     </div>
                 </div>
+                <ProfileDropdown clicked={clicked} toggle={toggle} setToggle={setToggle}/>
             </div>
-            <h6 className={`${clicked ? 'visible' : 'hidden'} text-xs hover:scale-105 duration-100 font-semibold absolute top-16 right-3 text-primary cursor-pointer`}
-                onClick={() => {
-                    dispatch(logout());
-                }}>
-                Sign out
-            </h6>
+
         </div>
     )
 }

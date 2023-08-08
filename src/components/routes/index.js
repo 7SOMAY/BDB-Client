@@ -10,6 +10,8 @@ import AnimeshHarshit from "../pages/AnimeshHarshit";
 import DSA from "../pages/DSA";
 import SainiSomay from "../pages/SainiSomay";
 import DiningHall from "../pages/DiningHall";
+import ProfilePage from "../home/ProfilePage";
+import Dashboard from "../home/Dashboard";
 
 export default function PageRoutes({isAuthenticated = false, user, page}) {
 
@@ -37,6 +39,16 @@ export default function PageRoutes({isAuthenticated = false, user, page}) {
             <Route path="/home" element={
                 <ProtectedRoute isAuthenticated={isAuthenticated}>
                     <Home isAuthenticated={isAuthenticated}/>
+                </ProtectedRoute>
+            }/>
+            <Route path="/home/profile" element={
+                <ProtectedRoute isAuthenticated={isAuthenticated}>
+                    <ProfilePage/>
+                </ProtectedRoute>
+            }/>
+            <Route path="/home/dashboard" element={
+                <ProtectedRoute isAuthenticated={isAuthenticated}>
+                    <Dashboard/>
                 </ProtectedRoute>
             }/>
             <Route path="/home/Kitchen" element={

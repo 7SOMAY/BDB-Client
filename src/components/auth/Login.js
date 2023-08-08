@@ -4,6 +4,7 @@ import ArrowCircleRightRoundedIcon from '@mui/icons-material/ArrowCircleRightRou
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {login} from "../../redux/actions/user";
+import Logo from "../home/Logo";
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -41,6 +42,7 @@ const Login = () => {
     return (
         <div
             className="flex text-sm font-semibold justify-center items-center h-screen w-screen bg-gradient-to-r from-primary to-[#A084DC] font-sans z-50">
+            <Logo path={'/'}/>
             <AnimatePresence>
                 {showForm && (
                     <motion.div

@@ -2,18 +2,22 @@ import React, {useState} from 'react';
 import {motion, AnimatePresence} from 'framer-motion';
 import {Link, useNavigate} from "react-router-dom";
 import ArrowCircleRightRoundedIcon from "@mui/icons-material/ArrowCircleRightRounded";
+import {useDispatch} from "react-redux";
+import {register} from "../../redux/actions/user";
+import Logo from "../home/Logo";
 
 const Register = ({setAuth}) => {
-    const [username, setUsername] = useState('');
+    const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [showForm, setShowForm] = useState(true);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
 
 
     const handleUsernameChange = (e) => {
-        setUsername(e.target.value);
+        setName(e.target.value);
     };
 
     const handlePasswordChange = (e) => {
@@ -26,11 +30,7 @@ const Register = ({setAuth}) => {
 
     const handleRegister = (e) => {
         e.preventDefault();
-        setUsername('');
-        setPassword('');
-        setShowForm(false);
-        navigate('/');
-        setAuth(true);
+        dispatch(register(name,email,password));
     };
 
     const containerVariants = {
@@ -47,6 +47,7 @@ const Register = ({setAuth}) => {
     return (
         <div
             className="flex justify-center text-sm font-semibold items-center h-screen w-screen bg-gradient-to-r from-primary to-[#A084DC] font-sans z-50">
+            <Logo path={'/'}/>
             <AnimatePresence>
                 {showForm && (
                     <motion.div
@@ -69,7 +70,7 @@ const Register = ({setAuth}) => {
                                     type="text"
                                     className="border border-gray-400 p-2 w-full focus:outline-none focus:ring-2 focus:ring-purple-500"
                                     placeholder={"Username"}
-                                    value={username}
+                                    value={name}
                                     onChange={handleUsernameChange}
                                 />
                             </div>
