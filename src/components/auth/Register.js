@@ -13,7 +13,7 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const dispatch = useDispatch();
 
-    const isLoading = useSelector(state => state.loading);
+    const isLoading = useSelector(state => state.user.loading);
 
 
     const handleUsernameChange = (e) => {
