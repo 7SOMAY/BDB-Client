@@ -35,47 +35,49 @@ export default function PageRoutes({isAuthenticated = false, user, page}) {
                 </ProtectedRoute>
             }/>
             {/*------------------------------Auth--------------------------------------------*/}
-
-            <Route path="/home" element={
-                <ProtectedRoute isAuthenticated={isAuthenticated}>
-                    <Home isAuthenticated={isAuthenticated}/>
-                </ProtectedRoute>
-            }/>
-            <Route path="/home/profile" element={
-                <ProtectedRoute isAuthenticated={isAuthenticated}>
-                    <ProfilePage/>
-                </ProtectedRoute>
-            }/>
-            <Route path="/home/dashboard" element={
-                <ProtectedRoute isAuthenticated={isAuthenticated}>
-                    <Dashboard/>
-                </ProtectedRoute>
-            }/>
-            <Route path="/home/Kitchen" element={
-                <ProtectedRoute isAuthenticated={isAuthenticated}>
-                    <Kitchen/>
-                </ProtectedRoute>
-            }/>
-            <Route path="/home/AnimeshHarshit" element={
-                <ProtectedRoute isAuthenticated={isAuthenticated}>
-                    <AnimeshHarshit/>
-                </ProtectedRoute>
-            }/>
-            <Route path="/home/DsaBhaggu" element={
-                <ProtectedRoute isAuthenticated={isAuthenticated}>
-                    <DSA/>
-                </ProtectedRoute>
-            }/>
-            <Route path="/home/SainiSomay" element={
-                <ProtectedRoute isAuthenticated={isAuthenticated}>
-                    <SainiSomay/>
-                </ProtectedRoute>
-            }/>
-            <Route path="/home/DiningHall" element={
-                <ProtectedRoute isAuthenticated={isAuthenticated}>
-                    <DiningHall/>
-                </ProtectedRoute>
-            }/>
+            <div className="py-24">
+                <Route path="/home" element={
+                    <ProtectedRoute isAuthenticated={isAuthenticated}>
+                        <Home isAuthenticated={isAuthenticated}/>
+                    </ProtectedRoute>
+                }/>
+                <Route path="/home/profile" element={
+                    <ProtectedRoute isAuthenticated={isAuthenticated}>
+                        <ProfilePage/>
+                    </ProtectedRoute>
+                }/>
+                <Route path="/home/dashboard" element={
+                    <ProtectedRoute isAuthenticated={isAuthenticated}>
+                        <Dashboard/>
+                    </ProtectedRoute>
+                }/>
+                <Route path="/home/Kitchen" element={
+                    <ProtectedRoute isAuthenticated={isAuthenticated}>
+                        <Kitchen/>
+                    </ProtectedRoute>
+                }/>
+                <Route path="/home/AnimeshHarshit" element={
+                    <ProtectedRoute isAuthenticated={isAuthenticated}>
+                        <AnimeshHarshit/>
+                    </ProtectedRoute>
+                }/>
+                <Route path="/home/DsaBhaggu" element={
+                    <ProtectedRoute isAuthenticated={isAuthenticated}>
+                        <DSA/>
+                    </ProtectedRoute>
+                }/>
+                <Route path="/home/SainiSomay" element={
+                    <ProtectedRoute isAuthenticated={isAuthenticated}>
+                        <SainiSomay/>
+                    </ProtectedRoute>
+                }/>
+                <Route path="/home/DiningHall" element={
+                    <ProtectedRoute isAuthenticated={isAuthenticated}>
+                        <DiningHall/>
+                    </ProtectedRoute>
+                }/>
+            </div>
         </Routes>
-    );
+    )
+        ;
 }
