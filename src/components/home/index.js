@@ -3,7 +3,6 @@ import MemberCard from "../cards/MemberCard";
 import {useSelector} from "react-redux";
 
 
-
 const Home = () => {
     const numberOfCards = useSelector((state) => state.user.users.length);
 
@@ -15,11 +14,12 @@ const Home = () => {
         <div className="py-24 sm:p-6">
             {
                 isLoading ?
-                    (<>{
-                        arr.map((_, index) => (
-                            <MemberCard key={index} isLoading={isLoading}/>
-                        ))
-                    }
+                    (<>
+                        <div className="flex flex-wrap justify-center gap-4">
+                            {arr && arr.map((_, index) => (
+                                <MemberCard key={index} isLoading={true}/>
+                            ))}
+                        </div>
                     </>)
                     :
                     (<>
