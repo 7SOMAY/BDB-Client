@@ -31,8 +31,11 @@ export default function App() {
 
     useEffect(() => {
         dispatch(loadHome());
+    }, [dispatch]);
+
+    useEffect(() => {
         dispatch(loadAllUsers());
-    }, [dispatch,user]);
+    }, [user, dispatch]);
 
     return (
         <Router>
