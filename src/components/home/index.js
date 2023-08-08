@@ -5,7 +5,7 @@ import {useSelector} from "react-redux";
 const Home = () => {
 
     const {users} = useSelector((state) => state.user);
-    const isLoading = useSelector((state) => state.loading);
+    const isLoading = useSelector((state) => state.user.loading);
 
     return (
         <div className="py-24 sm:p-6">
