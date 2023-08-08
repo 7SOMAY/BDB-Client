@@ -14,6 +14,10 @@ module.exports = {
         // 'background': '#645CBB',
         'card': '#A084DC',
       },
+      animation: {
+        'spin-slow': 'spin 3s linear infinite',
+        'bounce-slow': 'bounce 2s infinite',
+      }
     },
   },
   plugins: [],

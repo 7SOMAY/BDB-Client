@@ -14,7 +14,7 @@ const Logo = ({path}) => {
                 animate={{opacity: 1, y: 0}}
                 transition={{duration: 4, type: 'spring', stiffness: 200}}
             >
-                <div className={'flex justify-center items-center h-7 w-7 bg-white rounded-full'}>
+                <div className={`flex justify-center items-center h-7 w-7 bg-white rounded-full hover:animate-none animate-spin-slow`}>
                     <FiberSmartRecordIcon sx={{
                         color: '#645CBB',
                         fontSize: 20,
