@@ -17,7 +17,7 @@ const MemberCard = ({ name, isLoading }) => {
 };
 
 MemberCard.defaultProps = {
-    name: 'Name',
+    name: '',
     isLoading: false
 }
 
