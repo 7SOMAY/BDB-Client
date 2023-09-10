@@ -20,6 +20,7 @@ const MemberCard = ({name, isLoading, currUser, id, isDelete}) => {
             dispatch(exitHome());
         }
         setIsHovering(false);
+        setIsDeleting(false);
     }
 
 
@@ -89,7 +90,7 @@ const MemberCard = ({name, isLoading, currUser, id, isDelete}) => {
                                     animate={{opacity: 1}}
                                     transition={{duration: 0.4}}
                                     onClick={() => {
-                                        setIsDeleting(!isDeleting);
+                                        setIsDeleting(true);
                                     }}>
                                     <DeleteIcon/>
                                 </motion.button>
