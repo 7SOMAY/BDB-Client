@@ -87,7 +87,7 @@ const MemberCard = ({name, isLoading, currUser, id, isDelete}) => {
                                     </>
                                     :
                                     <motion.button
-                                        className={'text-white hover:text-card border-[2px] border-white hover:bg-white duration-200 h-10 w-10 flex justify-center items-center rounded-full absolute mt-1'}
+                                        className={'text-white border-[2px] border-white h-10 w-10 flex justify-center items-center rounded-full absolute mt-1'}
                                         whileTap={{scale: 0.80}}
                                         initial={{opacity: 0}}
                                         animate={{opacity: 1}}
