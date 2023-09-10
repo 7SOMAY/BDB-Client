@@ -52,7 +52,7 @@ const MemberCard = ({name, isLoading, currUser, id, isDelete}) => {
 
             {
                 isHovering && (
-                    (
+                    (currUser || user.user.role === 'admin') && (
                         <>
                             {isDeleting ?
                                 <>
