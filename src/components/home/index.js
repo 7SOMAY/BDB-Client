@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {Reorder} from "framer-motion"
 import MemberCard from "../cards/MemberCard";
 import {useDispatch, useSelector} from "react-redux";
 import {loadAllUsers} from "../../redux/actions/user";

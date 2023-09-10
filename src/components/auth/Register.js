@@ -6,7 +6,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {register} from "../../redux/actions/user";
 import Logo from "../home/Logo";
 import svgPath from "../../assets/spinner.svg";
-import {GoogleLogin} from "@react-oauth/google";
 
 const Register = () => {
     const [name, setName] = useState('');
