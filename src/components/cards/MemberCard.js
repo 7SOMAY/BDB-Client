@@ -15,7 +15,7 @@ const MemberCard = ({name, isLoading, currUser, id, isDelete}) => {
 
     const handleDelete = () => {
         isDelete(true);
-        if (user.user.role === 'admin' && !currUser) {
+        if (user.user.role === 'admin') {
             dispatch(deleteUser(id));
         } else {
             dispatch(exitHome());
