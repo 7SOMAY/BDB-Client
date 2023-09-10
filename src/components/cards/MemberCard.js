@@ -14,12 +14,9 @@ const MemberCard = ({name, isLoading, currUser, id, isDelete}) => {
 
     const handleDelete = () => {
         isDelete(true);
-        if(user.user.role === 'admin'){
-            console.log("removing user");
+        if (user.user.role === 'admin' && !currUser) {
             dispatch(deleteUser(id));
-        }
-        else{
-            console.log("exit home");
+        } else {
             dispatch(exitHome());
         }
         setIsHovering(false);
@@ -35,7 +32,7 @@ const MemberCard = ({name, isLoading, currUser, id, isDelete}) => {
                         setIsHovering(false);
                     }}
                     whileHover={{scale: 1.05}}
-                    // whileTap={{scale: 0.95}}
+            // whileTap={{scale: 0.95}}
                     transition={{duration: 0.2}}
         >
 
@@ -55,50 +52,48 @@ const MemberCard = ({name, isLoading, currUser, id, isDelete}) => {
                 isHovering && (
                     (currUser || user.user.role === 'admin') && (
                         <>
-                            <>
-                                {isDeleting ?
-                                    <>
-                                        <h2 className="text-sm font-bold absolute text-primary top-[-30px]">Are you
-                                            sure?</h2>
-                                        <div className={'flex flex-row absolute gap-4'}>
-                                            <motion.button
-                                                className={'text-white hover:bg-green-400 duration-100 border-[2px] border-white h-10 w-10 flex justify-center items-center rounded-full mt-3'}
-                                                whileTap={{scale: 0.80}}
-                                                initial={{opacity: 0}}
-                                                animate={{opacity: 1}}
-                                                transition={{duration: 0.4}}
-                                                onClick={() => {
-                                                    handleDelete();
-                                                }}>
-                                                <DoneIcon/>
-                                            </motion.button>
-                                            <motion.button
-                                                className={'text-white hover:bg-red-400 duration-100 border-[2px] border-white h-10 w-10 flex justify-center items-center rounded-full mt-3'}
-                                                whileTap={{scale: 0.80}}
-                                                initial={{opacity: 0}}
-                                                animate={{opacity: 1}}
-                                                transition={{duration: 0.4}}
-                                                onClick={() => {
-                                                    setIsDeleting(false);
-                                                }}>
-                                                <ClearIcon/>
-                                            </motion.button>
-                                        </div>
-                                    </>
-                                    :
-                                    <motion.button
-                                        className={'text-white border-[2px] border-white h-10 w-10 flex justify-center items-center rounded-full absolute mt-1'}
-                                        whileTap={{scale: 0.80}}
-                                        initial={{opacity: 0}}
-                                        animate={{opacity: 1}}
-                                        transition={{duration: 0.4}}
-                                        onClick={() => {
-                                            setIsDeleting(!isDeleting);
-                                        }}>
-                                        <DeleteIcon/>
-                                    </motion.button>
-                                }
-                            </>
+                            {isDeleting ?
+                                <>
+                                    <h2 className="text-sm font-bold absolute text-primary top-[-30px]">Are you
+                                        sure?</h2>
+                                    <div className={'flex flex-row absolute gap-4'}>
+                                        <motion.button
+                                            className={'text-white hover:bg-green-400 duration-100 border-[2px] border-white h-10 w-10 flex justify-center items-center rounded-full mt-3'}
+                                            whileTap={{scale: 0.80}}
+                                            initial={{opacity: 0}}
+                                            animate={{opacity: 1}}
+                                            transition={{duration: 0.4}}
+                                            onClick={() => {
+                                                handleDelete();
+                                            }}>
+                                            <DoneIcon/>
+                                        </motion.button>
+                                        <motion.button
+                                            className={'text-white hover:bg-red-400 duration-100 border-[2px] border-white h-10 w-10 flex justify-center items-center rounded-full mt-3'}
+                                            whileTap={{scale: 0.80}}
+                                            initial={{opacity: 0}}
+                                            animate={{opacity: 1}}
+                                            transition={{duration: 0.4}}
+                                            onClick={() => {
+                                                setIsDeleting(false);
+                                            }}>
+                                            <ClearIcon/>
+                                        </motion.button>
+                                    </div>
+                                </>
+                                :
+                                <motion.button
+                                    className={'text-white border-[2px] border-white h-10 w-10 flex justify-center items-center rounded-full absolute mt-1'}
+                                    whileTap={{scale: 0.80}}
+                                    initial={{opacity: 0}}
+                                    animate={{opacity: 1}}
+                                    transition={{duration: 0.4}}
+                                    onClick={() => {
+                                        setIsDeleting(!isDeleting);
+                                    }}>
+                                    <DeleteIcon/>
+                                </motion.button>
+                            }
                         </>
                     )
                 )
