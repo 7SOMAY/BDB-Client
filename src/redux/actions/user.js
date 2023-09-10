@@ -16,10 +16,10 @@ export const login = (email, password) => async (dispatch) => {
     }
 }
 
-export const register = (name,email,password) => async (dispatch) => {
+export const register = (name, email, password) => async (dispatch) => {
     try {
         dispatch({type: "USER_REGISTER_REQUEST"});
-        const {data} = await axios.post(`${server}/register`, {name,email,password}, {
+        const {data} = await axios.post(`${server}/register`, {name, email, password}, {
             headers: {
                 "Content-Type": "application/json",
             },
@@ -34,7 +34,7 @@ export const register = (name,email,password) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
     try {
         dispatch({type: "USER_LOGOUT_REQUEST"});
-        const {data} = await axios.get(`${server}/logout`,{
+        const {data} = await axios.get(`${server}/logout`, {
             withCredentials: true,
         });
         dispatch({type: "USER_LOGOUT_SUCCESS", payload: data.message});
@@ -46,7 +46,7 @@ export const logout = () => async (dispatch) => {
 export const loadAllUsers = () => async (dispatch) => {
     try {
         dispatch({type: "GET_ALL_USER_REQUEST"});
-        const {data} = await axios.get(`${server}/admin/users`,{
+        const {data} = await axios.get(`${server}/admin/users`, {
             withCredentials: true,
         });
         dispatch({type: "GET_ALL_USER_SUCCESS", payload: data.users});
@@ -57,11 +57,35 @@ export const loadAllUsers = () => async (dispatch) => {
 export const loadHome = () => async (dispatch) => {
     try {
         dispatch({type: "USER_LOAD_REQUEST"});
-        const {data} = await axios.get(`${server}/home`,{
+        const {data} = await axios.get(`${server}/home`, {
             withCredentials: true,
         });
         dispatch({type: "USER_LOAD_SUCCESS", payload: data});
     } catch (error) {
         dispatch({type: "USER_LOAD_FAIL", payload: error.response.data.message});
+    }
+}
+
+export const deleteUser = (id) => async (dispatch) => {
+    try {
+        dispatch({type: "DELETE_USER_REQUEST"});
+        const {data} = await axios.delete(`${server}/admin/user/${id}`, {
+            withCredentials: true,
+        });
+        dispatch({type: "DELETE_USER_SUCCESS", payload: data.message});
+    } catch (error) {
+        dispatch({type: "DELETE_USER_FAIL", payload: error.response.data.message});
+    }
+}
+
+export const exitHome = () => async (dispatch) => {
+    try {
+        dispatch({type: "EXIT_HOME_REQUEST"});
+        const {data} = await axios.delete(`${server}/me`,{
+            withCredentials: true,
+        });
+        dispatch({type: "EXIT_HOME_SUCCESS", payload: data.message});
+    } catch (error) {
+        dispatch({type: "EXIT_HOME_FAIL", payload: error.response.data.message});
     }
 }
