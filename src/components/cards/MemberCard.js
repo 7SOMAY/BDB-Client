@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {deleteUser, exitHome} from "../../redux/actions/user";
 import DoneIcon from '@mui/icons-material/Done';
 import ClearIcon from '@mui/icons-material/Clear';
+import svgPath from "../../assets/spinner.svg";
 
 const MemberCard = ({name, isLoading, currUser, id, isDelete}) => {
     const [isHovering, setIsHovering] = React.useState(false);
@@ -44,7 +45,7 @@ const MemberCard = ({name, isLoading, currUser, id, isDelete}) => {
                 }}
             >
                 <div className="flex flex-col h-full w-2/3 justify-center items-center">
-                    <h1 className={`text-3xl font-extrabold capitalize`}>{name}</h1>
+                    {isLoading ? <img src={svgPath} className="animate-spin h-5 w-5 mr-3" alt={'loader'}></img> : <h1 className={`text-3xl font-extrabold capitalize`}>{name}</h1>}
                     {currUser && <h1 className="text-md font-light absolute mt-20">You</h1>}
                 </div>
             </motion.div>
