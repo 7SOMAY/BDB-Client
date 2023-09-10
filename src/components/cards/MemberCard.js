@@ -45,7 +45,7 @@ const MemberCard = ({name, isLoading, currUser, id, isDelete}) => {
                 }}
             >
                 <div className="flex flex-col h-full w-2/3 justify-center items-center">
-                    {isLoading ? <img src={svgPath} className="animate-spin h-5 w-5 mr-3" alt={'loader'}></img> : <h1 className={`text-3xl font-extrabold capitalize`}>{name}</h1>}
+                    <h1 className={`text-3xl font-extrabold capitalize`}>{name}</h1>
                     {currUser && <h1 className="text-md font-light absolute mt-20">You</h1>}
                 </div>
             </motion.div>
@@ -68,7 +68,7 @@ const MemberCard = ({name, isLoading, currUser, id, isDelete}) => {
                                             onClick={() => {
                                                 handleDelete();
                                             }}>
-                                            <DoneIcon/>
+                                            {isLoading ? <img src={svgPath} className="animate-spin h-5 w-5 mr-3" alt={'loader'}></img> : <DoneIcon/>}
                                         </motion.button>
                                         <motion.button
                                             className={'text-white hover:bg-red-400 duration-100 border-[2px] border-white h-10 w-10 flex justify-center items-center rounded-full mt-3'}
