@@ -94,7 +94,7 @@ export const exitHome = () => async (dispatch) => {
 export const updateRole = (id) => async (dispatch) => {
     try {
         dispatch({type: "UPDATE_ROLE_REQUEST"});
-        const {data} = await axios.put(`${server}/admin/user/${id}`, {
+        const {data} = await axios.put(`${server}/admin/user/${id}`,{}, {
             withCredentials: true,
         });
         dispatch({type: "UPDATE_ROLE_SUCCESS", payload: data.message});

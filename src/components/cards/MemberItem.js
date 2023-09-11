@@ -12,7 +12,7 @@ const MemberItem = ({id, name, handleAdminDelete, isLoading}) => {
         dispatch(exitHome());
     }
     return (
-        <div className="flex items-center relative justify-between capitalize gap-4 hover:bg-purple-100 rounded-lg py-2 px-3  cursor-pointer"
+        <div className="flex w-full items-center relative justify-between capitalize gap-4 hover:bg-purple-100 rounded-lg py-2 px-3  cursor-pointer"
             onClick={() => {
                 makeAdmin();
                 if(!isLoading) setLoad(true);
