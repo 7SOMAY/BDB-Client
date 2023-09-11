@@ -22,7 +22,7 @@ const Home = () => {
         numberOfCards = 3;
     }
 
-    const [deleting, setDeleting] = useState(false);
+    // const [deleting, setDeleting] = useState(false);
     const [deleteAdmin, setDeleteAdmin] = useState(false);
 
 
@@ -31,13 +31,14 @@ const Home = () => {
 
 
     const isLoading = useSelector((state) => state.user.loading);
+    const isDeleting = useSelector((state) => state.user.deleting);
     const arr = Array.from({length: numberOfCards});
 
 
     useEffect(() => {
         dispatch(loadAllUsers());
         setDeleting(false);
-    }, [isLoading, dispatch]);
+    }, [isDeleting, dispatch]);
 
     const {user} = useSelector((state) => state.user);
 
@@ -71,7 +72,6 @@ const Home = () => {
                                                     id={member._id}
                                                     currUser={member.name === user.user.name}
                                                     name={member.name}
-                                                    isDelete={setDeleting}
                                                     handleAdminDelete={handleAdminDelete}
                                                     userRole={member.role}
                                         />

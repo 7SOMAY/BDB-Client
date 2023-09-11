@@ -7,7 +7,7 @@ import DoneIcon from '@mui/icons-material/Done';
 import ClearIcon from '@mui/icons-material/Clear';
 import svgPath from "../../assets/spinner.svg";
 
-const MemberCard = ({name, isLoading, currUser, id, isDelete, handleAdminDelete, setAdminID, userRole}) => {
+const MemberCard = ({name, isLoading, currUser, id, handleAdminDelete, userRole}) => {
     const [isHovering, setIsHovering] = React.useState(false);
     const [isDeleting, setIsDeleting] = React.useState(false);
     const {user} = useSelector((state) => state.user);
@@ -15,7 +15,6 @@ const MemberCard = ({name, isLoading, currUser, id, isDelete, handleAdminDelete,
 
 
     const handleDelete = () => {
-        isDelete(true);
         if (user.user.role === 'admin') {
             dispatch(deleteUser(id));
         } else {

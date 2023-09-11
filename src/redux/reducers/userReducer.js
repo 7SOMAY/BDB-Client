@@ -89,13 +89,16 @@ export const userReducer = createReducer({initialState},{
 
     // Delete User
     DELETE_USER_REQUEST: (state) => {
+        state.deleting = true;
         state.loading = true;
     },
     DELETE_USER_SUCCESS: (state, action) => {
+        state.deleting = false;
         state.loading = false;
         state.message = action.payload;
     },
     DELETE_USER_FAIL: (state, action) => {
+        state.deleting = false;
         state.loading = false;
         state.error = action.payload;
     },
