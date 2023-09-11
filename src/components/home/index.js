@@ -37,7 +37,6 @@ const Home = () => {
 
     useEffect(() => {
         dispatch(loadAllUsers());
-        setDeleting(false);
     }, [isDeleting, dispatch]);
 
     const {user} = useSelector((state) => state.user);
