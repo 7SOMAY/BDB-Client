@@ -89,3 +89,19 @@ export const exitHome = () => async (dispatch) => {
         dispatch({type: "EXIT_HOME_FAIL", payload: error.response.data.message});
     }
 }
+
+export const updateRole = (id) => async (dispatch) => {
+    try {
+        dispatch({type: "UPDATE_ROLE_REQUEST"});
+        console.log('request sent');
+        console.log(`${server}/admin/user/${id}`);
+        const {data} = await axios.put(`${server}/admin/user/${id}`, {
+            withCredentials: true,
+        });
+        dispatch({type: "UPDATE_ROLE_SUCCESS", payload: data.message});
+        console.log('request success');
+    } catch (error) {
+        dispatch({type: "UPDATE_ROLE_FAIL", payload: error.response.data.message});
+        console.log('request fail');
+    }
+}

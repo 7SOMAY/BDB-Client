@@ -7,11 +7,12 @@ import DoneIcon from '@mui/icons-material/Done';
 import ClearIcon from '@mui/icons-material/Clear';
 import svgPath from "../../assets/spinner.svg";
 
-const MemberCard = ({name, isLoading, currUser, id, isDelete}) => {
+const MemberCard = ({name, isLoading, currUser, id, isDelete, handleAdminDelete, setAdminID, userRole}) => {
     const [isHovering, setIsHovering] = React.useState(false);
     const [isDeleting, setIsDeleting] = React.useState(false);
     const {user} = useSelector((state) => state.user);
     const dispatch = useDispatch();
+
 
     const handleDelete = () => {
         isDelete(true);
@@ -46,7 +47,8 @@ const MemberCard = ({name, isLoading, currUser, id, isDelete}) => {
             >
                 <div className="flex flex-col h-full w-2/3 justify-center items-center">
                     <h1 className={`text-3xl font-extrabold capitalize`}>{name}</h1>
-                    {currUser && <h1 className="text-md font-light absolute mt-20">You</h1>}
+                    {currUser && userRole !== 'admin' && <h1 className="text-md font-light absolute mt-20">You</h1>}
+                    {userRole === 'admin' && <h1 className="text-md font-light absolute mt-20">Admin</h1>}
                 </div>
             </motion.div>
 
@@ -66,7 +68,8 @@ const MemberCard = ({name, isLoading, currUser, id, isDelete}) => {
                                             animate={{opacity: 1}}
                                             transition={{duration: 0.4}}
                                             onClick={() => {
-                                                handleDelete();
+                                                userRole === 'admin' ? handleAdminDelete(false) : handleDelete();
+                                                setIsDeleting(false);
                                             }}>
                                             {isLoading ? <img src={svgPath} className="animate-spin h-5 w-5 mr-3" alt={'loader'}></img> : <DoneIcon/>}
                                         </motion.button>

@@ -115,6 +115,20 @@ export const userReducer = createReducer({initialState},{
         state.error = action.payload;
     },
 
+    // Update Role
+    UPDATE_ROLE_REQUEST: (state) => {
+        state.loading = true;
+    },
+    UPDATE_ROLE_SUCCESS: (state, action) => {
+        state.loading = false;
+        state.message = action.payload;
+    },
+    UPDATE_ROLE_FAIL: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+    },
+
+
     // Clear Errors
     CLEAR_ERROR: (state) => {
         state.error = null;
