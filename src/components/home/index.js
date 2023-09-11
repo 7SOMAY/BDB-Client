@@ -26,15 +26,20 @@ const Home = () => {
     const [deleteAdmin, setDeleteAdmin] = useState(false);
 
 
+
+
+
+
+    const isLoading = useSelector((state) => state.user.loading);
+    const arr = Array.from({length: numberOfCards});
+
+
     useEffect(() => {
         dispatch(loadAllUsers());
         setDeleting(false);
-    }, [deleting, dispatch]);
-
+    }, [isLoading, dispatch]);
 
     const {user} = useSelector((state) => state.user);
-    const isLoading = useSelector((state) => state.user.loading);
-    const arr = Array.from({length: numberOfCards});
 
 
     const handleAdminDelete = async (deleteNow) => {
