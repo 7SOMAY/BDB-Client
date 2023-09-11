@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {login} from "../../redux/actions/user";
 import Logo from "../home/Logo";
 import svgPath from "../../assets/spinner.svg"
+import googleSvg from "../../assets/google.svg"
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -46,7 +47,7 @@ const Login = () => {
             <Logo path={'/'}/>
             <AnimatePresence>
                 <motion.div
-                    className="bg-white p-8 md:p-12 rounded shadow-md flex gap-12"
+                    className="bg-white p-8 md:p-12 scale-110 rounded shadow-md flex gap-12"
                     variants={containerVariants}
                     initial="initial"
                     animate="animate"
@@ -85,7 +86,7 @@ const Login = () => {
                                     <>
                                         <motion.button
                                             type="submit"
-                                            className="flex bg-purple-700 items-center cursor-progress text-white font-bold py-2 px-4 rounded"
+                                            className="flex bg-purple-700 items-center cursor-progress text-white font-bold py-2 px-4 rounded-sm"
                                         >
                                             <img src={svgPath} className="animate-spin h-5 w-5 mr-3" alt={'loader'}>
                                             </img>
@@ -93,17 +94,29 @@ const Login = () => {
                                         </motion.button>
                                     </>
                                 ) : (
-                                    <>
+                                    <div className={'flex justify-between'}>
                                         <motion.button
                                             type="submit"
-                                            className="block bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
-                                            whileHover={{scale: 1.05}}
-                                            whileTap={{scale: 0.95}}
+                                            className="block bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-sm"
+                                            whileHover={{scale: 1.02}}
+                                            whileTap={{scale: 0.98}}
                                             onClick={handleSubmit}
                                         >
                                             Login
                                         </motion.button>
-                                    </>
+                                        <motion.button
+                                            type="submit"
+                                            className="flex gap-2 bg-[#4285F4] hover:bg-[#4285F6] rounded-sm items-center p-[2px]"
+                                            whileHover={{scale: 1.02}}
+                                            whileTap={{scale: 0.98}}
+                                            onClick={handleSubmit}
+                                        >
+                                            <div className={'h-full w-8 bg-white flex items-center justify-center'}>
+                                                <img src={googleSvg} className={'h-5 w-5'} alt={'google'}></img>
+                                            </div>
+                                            <div className={'text-xs text-white font-medium mr-2'}>Sign in with Google</div>
+                                        </motion.button>
+                                    </div>
                                 )
                             }
 
@@ -123,19 +136,30 @@ const Login = () => {
                         </motion.form>
                     </div>
 
-                    {/* Vertical Line */}
-                    <motion.div
-                        className="border-l text-gray-700 border-gray-300 h-80 flex items-center"
-                        initial={{opacity: 0}}
-                        animate={{opacity: 1, transition: {duration: 0.5, delay: 0.2}}}
+                    {/*/!*Vertical Line *!/*/}
+                    {/*<motion.div*/}
+                    {/*    className="border-l text-gray-700 hidden md:flex border-gray-300 h-80 items-center"*/}
+                    {/*    initial={{opacity: 0}}*/}
+                    {/*    animate={{opacity: 1, transition: {duration: 0.5, delay: 0.2}}}*/}
 
-                    >
-                        <span className={'h-fit bg-white w-fit relative right-[11px]'}>OR</span>
-                    </motion.div>
+                    {/*>*/}
+                    {/*    <span className={'h-fit bg-white w-fit relative right-[11px]'}>OR</span>*/}
+                    {/*</motion.div>*/}
 
-                    <div className={'flex items-center'}>
-                        <h2 className="text-3xl mb-4 font-extrabold text-gray-800">Sign In with Google</h2>
-                    </div>
+                    {/*<div className={'hidden md:flex items-center'}>*/}
+                    {/*    <motion.button*/}
+                    {/*        type="submit"*/}
+                    {/*        className="flex gap-2 bg-[#4285F4] hover:bg-[#4285F6] rounded-sm items-center p-[2px]"*/}
+                    {/*        whileHover={{scale: 1.02}}*/}
+                    {/*        whileTap={{scale: 0.98}}*/}
+                    {/*        onClick={handleSubmit}*/}
+                    {/*    >*/}
+                    {/*        <div className={'h-8 w-8 bg-white flex items-center justify-center'}>*/}
+                    {/*            <img src={googleSvg} className={'h-5 w-5'} alt={'google'}></img>*/}
+                    {/*        </div>*/}
+                    {/*        <div className={'text-xs text-white font-medium mx-1 mr-3'}>Sign in with Google</div>*/}
+                    {/*    </motion.button>*/}
+                    {/*</div>*/}
                 </motion.div>
             </AnimatePresence>
         </div>
