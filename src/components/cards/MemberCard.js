@@ -67,7 +67,7 @@ const MemberCard = ({name, isLoading, currUser, id, handleAdminDelete, userRole}
                                             animate={{opacity: 1}}
                                             transition={{duration: 0.4}}
                                             onClick={() => {
-                                                userRole === 'admin' ? handleAdminDelete(false) : handleDelete();
+                                                userRole === 'admin' ? handleAdminDelete(true) : handleDelete();
                                                 setIsDeleting(false);
                                             }}>
                                             {isLoading ? <img src={svgPath} className="animate-spin h-5 w-5 mr-3" alt={'loader'}></img> : <DoneIcon/>}

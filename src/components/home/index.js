@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import MemberCard from "../cards/MemberCard";
 import MemberItem from "../cards/MemberItem";
 import {useDispatch, useSelector} from "react-redux";
-import {loadAllUsers, deleteUser} from "../../redux/actions/user";
+import {loadAllUsers, exitHome} from "../../redux/actions/user";
 import {motion} from "framer-motion";
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -41,15 +41,6 @@ const Home = () => {
 
     const {user} = useSelector((state) => state.user);
 
-
-    const handleAdminDelete = async (deleteNow) => {
-        console.log(deleteNow);
-        if (deleteNow) {
-            dispatch(deleteUser(user.user._id));
-        }
-        setDeleteAdmin(true);
-    }
-
     return (
         <>
             <motion.div className="py-24 sm:p-6">
@@ -71,7 +62,7 @@ const Home = () => {
                                                     id={member._id}
                                                     currUser={member.name === user.user.name}
                                                     name={member.name}
-                                                    handleAdminDelete={handleAdminDelete}
+                                                    handleAdminDelete={setDeleteAdmin}
                                                     userRole={member.role}
                                         />
                                     </>
@@ -108,7 +99,6 @@ const Home = () => {
                                     <MemberItem key={member._id}
                                                 id={member._id}
                                                 name={member.name}
-                                                handleAdminDelete={handleAdminDelete}
                                                 isLoading={isLoading}
                                     />
                                 )}

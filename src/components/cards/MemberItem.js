@@ -1,5 +1,5 @@
 import {useDispatch} from "react-redux";
-import {updateRole} from "../../redux/actions/user";
+import {exitHome, updateRole} from "../../redux/actions/user";
 import {LoaderIcon} from "react-hot-toast";
 import {useEffect, useState} from "react";
 
@@ -9,7 +9,7 @@ const MemberItem = ({id, name, handleAdminDelete, isLoading}) => {
 
     const makeAdmin = async () => {
         await dispatch(updateRole(id));
-        handleAdminDelete(true);
+        dispatch(exitHome());
     }
     return (
         <div className="flex items-center relative justify-between capitalize gap-4 hover:bg-purple-100 rounded-lg py-2 px-3  cursor-pointer"
