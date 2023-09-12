@@ -12,6 +12,7 @@ import SainiSomay from "../pages/SainiSomay";
 import DiningHall from "../pages/DiningHall";
 import ProfilePage from "../home/ProfilePage";
 import Dashboard from "../home/Dashboard";
+import ArchitecturalLayout from "../structure";
 
 export default function PageRoutes({isAuthenticated = false, user, page}) {
 
@@ -39,6 +40,7 @@ export default function PageRoutes({isAuthenticated = false, user, page}) {
                 <Route path="/home" element={
                     <ProtectedRoute isAuthenticated={isAuthenticated}>
                         <Home isAuthenticated={isAuthenticated}/>
+                        {/*<ArchitecturalLayout isAuthenticated={isAuthenticated}/>*/}
                     </ProtectedRoute>
                 }/>
                 <Route path="/home/profile" element={
