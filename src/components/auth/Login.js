@@ -94,7 +94,7 @@ const Login = () => {
                                         </motion.button>
                                     </>
                                 ) : (
-                                    <div className={'flex justify-between'}>
+                                    <div className={'flex gap-3 justify-between'}>
                                         <motion.button
                                             type="submit"
                                             className="block bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-sm"
