@@ -8,8 +8,8 @@ const initialState = {
     users: [],
     error: null,
     message: null,
+    adminCount: 0,
 }
-
 export const userReducer = createReducer({initialState},{
 
     // Login
@@ -65,7 +65,8 @@ export const userReducer = createReducer({initialState},{
     },
     GET_ALL_USER_SUCCESS: (state, action) => {
         state.loading = false;
-        state.users = action.payload;
+        state.users = action.payload.users;
+        state.adminCount = action.payload.adminCount;
     },
     GET_ALL_USER_FAIL: (state, action) => {
         state.loading = false;
@@ -139,5 +140,6 @@ export const userReducer = createReducer({initialState},{
     },
     CLEAR_MESSAGE: (state) => {
         state.message = null;
-    }
+    },
+
 });

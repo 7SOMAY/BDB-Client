@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {motion} from 'framer-motion';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {useDispatch, useSelector} from "react-redux";
@@ -9,7 +9,7 @@ import svgPath from "../../assets/spinner.svg";
 import WarningIcon from '@mui/icons-material/Warning';
 import toast, {Toaster} from "react-hot-toast";
 
-const MemberCard = ({name, isLoading, currUser, id, handleAdminDelete, userRole}) => {
+const MemberCard = ({name, isLoading, currUser, id, handleAdminDelete, userRole, adminCount, userCount}) => {
     const [isHovering, setIsHovering] = React.useState(false);
     const [isDeleting, setIsDeleting] = React.useState(false);
     const {user} = useSelector((state) => state.user);
@@ -17,7 +17,20 @@ const MemberCard = ({name, isLoading, currUser, id, handleAdminDelete, userRole}
 
 
     const handleDelete = () => {
+        if(userCount === 1){
+            toast.error("You cannot leave the BDB alone!");
+        }
+        if(userRole === 'admin' && name === user.user.name){
+            if(adminCount !== 1){
+                dispatch(exitHome());
+            }
+            return;
+        }
         if (user.user.role === 'admin') {
+            if (userRole === 'admin') {
+                toast.error("You cannot delete an admin!");
+                return;
+            }
             dispatch(deleteUser(id));
         } else {
             dispatch(exitHome());
@@ -52,6 +65,7 @@ const MemberCard = ({name, isLoading, currUser, id, handleAdminDelete, userRole}
                         }}
                         onMouseLeave={() => {
                             setIsHovering(false);
+                            setIsDeleting(false);
                         }}
                         whileHover={{scale: 1.05}}
                 // whileTap={{scale: 0.95}}
@@ -84,7 +98,7 @@ const MemberCard = ({name, isLoading, currUser, id, handleAdminDelete, userRole}
                                                 animate={{opacity: 1}}
                                                 transition={{duration: 0.4}}
                                                 onClick={() => {
-                                                    userRole === 'admin' ? handleAdminDelete(true) : handleDelete();
+                                                    userRole === 'admin' && adminCount === 1 && userCount !== 1 ? handleAdminDelete(true) : handleDelete(userRole);
                                                     setIsDeleting(false);
                                                 }}>
                                                 {isLoading ? <img src={svgPath} className="animate-spin h-5 w-5 mr-3"

@@ -50,7 +50,7 @@ export const loadAllUsers = () => async (dispatch) => {
         const {data} = await axios.get(`${server}/admin/users`, {
             withCredentials: true,
         });
-        dispatch({type: "GET_ALL_USER_SUCCESS", payload: data.users});
+        dispatch({type: "GET_ALL_USER_SUCCESS", payload: data});
     } catch (error) {
         dispatch({type: "GET_ALL_USER_FAIL", payload: error.response.data.message});
     }
@@ -102,3 +102,8 @@ export const updateRole = (id) => async (dispatch) => {
         dispatch({type: "UPDATE_ROLE_FAIL", payload: error.response.data.message});
     }
 }
+
+// export const countAdmin = (count) => async (dispatch) => {
+//     // console.log(count);
+//     dispatch({type: "COUNT_ADMIN", payload: count});
+// }

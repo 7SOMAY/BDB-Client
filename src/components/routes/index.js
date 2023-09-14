@@ -13,8 +13,10 @@ import DiningHall from "../pages/DiningHall";
 import ProfilePage from "../home/ProfilePage";
 import Dashboard from "../home/Dashboard";
 import ArchitecturalLayout from "../structure";
+import {useState} from "react";
 
 export default function PageRoutes({isAuthenticated = false, user, page}) {
+    const [adminCount, setAdminCount] = useState(0);
 
     return (
         <Routes>
