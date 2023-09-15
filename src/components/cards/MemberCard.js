@@ -59,7 +59,7 @@ const MemberCard = ({name, isLoading, currUser, id, handleAdminDelete, userRole,
                     <div>Are you sure?</div>
                 </motion.h2>
             }
-            <motion.div className={'flex flex-col items-center gap-8 mx-2'}
+            <motion.div className={'flex flex-col items-center relative gap-8 mx-2'}
                         onMouseEnter={() => {
                             setIsHovering(true);
                         }}
