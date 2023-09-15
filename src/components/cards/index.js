@@ -6,6 +6,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {useDispatch} from "react-redux";
 import {deleteAppliance} from "../../redux/actions/room";
+import toast from "react-hot-toast";
 
 
 const Card = ({title, isLoading, isDeleting, setIsDeleting, roomId, applianceId}) => {
@@ -58,8 +59,9 @@ const Card = ({title, isLoading, isDeleting, setIsDeleting, roomId, applianceId}
                                         initial={{opacity: 0}}
                                         animate={{opacity: 1}}
                                         transition={{duration: 0.4}}
-                                        onClick={() => {
-                                            dispatch(deleteAppliance(roomId, applianceId));
+                                        onClick={async () => {
+                                            await dispatch(deleteAppliance(roomId, applianceId));
+                                            toast.success('Appliance deleted successfully!');
                                             setIsDeleting(false);
                                         }}>
                                         <DoneIcon/>

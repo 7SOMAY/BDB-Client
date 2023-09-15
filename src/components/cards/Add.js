@@ -20,7 +20,9 @@ const Add = ({roomId}) => {
         if (applianceName.length) {
             console.log(applianceName.length);
             setApplianceName('');
-            dispatch(addAppliance(roomId, applianceName, user.user.name));
+            dispatch(addAppliance(roomId, applianceName, user.user.name)).then(() => {
+                toast.success('Appliance added successfully');
+            });
             setIsAdding(false);
         }
         else {
