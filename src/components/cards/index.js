@@ -18,6 +18,7 @@ const Card = ({
                   applianceId,
                   applianceStatus,
                   startTime,
+                  isUpdating
               }) => {
     const [toggle, setToggle] = useState(applianceStatus === 'on');
     const [hover, setHover] = useState(false);
@@ -27,7 +28,7 @@ const Card = ({
     let min = 0;
     let hour = 0;
 
-    if(toggle){
+    if (toggle) {
         let time = Math.trunc((Date.now() - startTime) / 1000);
         sec = time % 60;
         time = (time - sec) / 60;
@@ -38,7 +39,7 @@ const Card = ({
 
     return (
         <motion.div className={''}>
-            {isLoading ?
+            {isLoading || isUpdating ?
                 <div
                     className={`animate-pulse hover:scale-[1.05] cursor-pointer mx-auto bg-gradient-to-r from-[#A66CFF] to-[#9C9EFE] text-white h-36 w-64 min-[420px]:h-40 min-[420px]:w-60 duration-300 shadow-lg rounded-2xl p-4 flex justify-between`}></div>
                 :
