@@ -3,6 +3,7 @@ import {createReducer} from '@reduxjs/toolkit';
 const initialState = {
     deleting: false,
     adding: false,
+    updating: false,
     loading: false,
     rooms: [],
     error: null,
@@ -51,6 +52,22 @@ export const roomReducer = createReducer({initialState},{
     },
     DELETE_APPLIANCE_FAIL: (state, action) => {
         state.deleting = false;
+        state.loading = false;
+        state.error = action.payload;
+    },
+
+    // Update appliance status
+    UPDATE_APPLIANCE_STATUS_REQUEST: (state) => {
+        state.updating = true;
+        state.loading = true;
+    },
+    UPDATE_APPLIANCE_STATUS_SUCCESS: (state, action) => {
+        state.updating = false;
+        state.loading = false;
+        state.rooms = action.payload;
+    },
+    UPDATE_APPLIANCE_STATUS_FAIL: (state, action) => {
+        state.updating = false;
         state.loading = false;
         state.error = action.payload;
     },

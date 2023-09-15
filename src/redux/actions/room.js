@@ -36,3 +36,16 @@ export const deleteAppliance = (id, applianceId) => async (dispatch) => {
         dispatch({type: "DELETE_APPLIANCE_FAIL", payload: error.response.data.message});
     }
 }
+
+export const updateApplianceStatus = (id, applianceId, flag) => async (dispatch) => {
+    try {
+        dispatch({type: "UPDATE_APPLIANCE_STATUS_REQUEST"});
+        let status = flag ? "on" : "off";
+        const {data} = await axios.put(`${server}/room/${id}/${applianceId}/status`, {status}, {
+            withCredentials: true,
+        });
+        dispatch({type: "UPDATE_APPLIANCE_STATUS_SUCCESS", payload: data.rooms});
+    } catch (error) {
+        dispatch({type: "UPDATE_APPLIANCE_STATUS_FAIL", payload: error.response.data.message});
+    }
+}

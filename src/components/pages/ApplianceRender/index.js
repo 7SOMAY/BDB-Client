@@ -13,14 +13,14 @@ const AppliancesRender = ({roomName}) => {
 
     const adding = useSelector((state) => state.room.adding);
     const deleting = useSelector((state) => state.room.deleting);
+    const updating = useSelector((state) => state.room.updating);
     const loading = useSelector((state) => state.room.loading);
 
     useEffect(() => {
         dispatch(loadAllRooms());
-    }, [dispatch, adding, deleting]);
+    }, [dispatch, adding, deleting, updating]);
 
     const {rooms} = useSelector((state) => state.room);
-
 
 
     const [isDeleting, setIsDeleting] = useState(false);
@@ -42,7 +42,16 @@ const AppliancesRender = ({roomName}) => {
                 :
                 <div className={'px-3 flex justify-center items-center gap-6 flex-wrap py-6 sm:py-12'}>
                     {data[0] && data[0].map((i) => (
-                        <Card key={i._id} title={i.name} roomId={roomId} applianceId={i._id} isDeleting={isDeleting} setIsDeleting={setIsDeleting}/>
+                        <Card key={i._id}
+                              title={i.name}
+                              roomId={roomId}
+                              applianceId={i._id}
+                              applianceStatus={i.status}
+                              isDeleting={isDeleting}
+                              setIsDeleting={setIsDeleting}
+                            // duration={i.duration.slice(-1)[0].time}
+                              startTime={i.startTime}
+                        />
                     ))}
                 </div>
             }

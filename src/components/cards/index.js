@@ -5,14 +5,36 @@ import DoneIcon from "@mui/icons-material/Done";
 import ClearIcon from "@mui/icons-material/Clear";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {useDispatch} from "react-redux";
-import {deleteAppliance} from "../../redux/actions/room";
+import {deleteAppliance, updateApplianceStatus} from "../../redux/actions/room";
 import toast from "react-hot-toast";
 
 
-const Card = ({title, isLoading, isDeleting, setIsDeleting, roomId, applianceId}) => {
-    const [toggle, setToggle] = useState(false);
+const Card = ({
+                  title,
+                  isLoading,
+                  isDeleting,
+                  setIsDeleting,
+                  roomId,
+                  applianceId,
+                  applianceStatus,
+                  startTime,
+              }) => {
+    const [toggle, setToggle] = useState(applianceStatus === 'on');
     const [hover, setHover] = useState(false);
     const dispatch = useDispatch();
+
+    let sec = 0;
+    let min = 0;
+    let hour = 0;
+
+    if(toggle){
+        let time = Math.trunc((Date.now() - startTime) / 1000);
+        sec = time % 60;
+        time = (time - sec) / 60;
+        min = time % 60;
+        time = (time - min) / 60;
+        hour = time % 60;
+    }
 
     return (
         <motion.div className={''}>
@@ -33,7 +55,7 @@ const Card = ({title, isLoading, isDeleting, setIsDeleting, roomId, applianceId}
                         <div
                             className={`${toggle ? 'justify-between bg-transparent text-white' : 'justify-center items-center'} flex flex-col h-full w-2/3 duration-300 p-3 rounded-2xl ${hover ? '' : (toggle ? 'bg-transparent' : 'bg-white text-card')}`}> {/*${hover? '' :(toggle?'bg-transparent':'bg-white text-card')}*/}
                             <h1 className="text-3xl font-extrabold capitalize">{title}</h1>
-                            {toggle ? <Timer/> : null}
+                            {toggle && <Timer sec={sec} min={min} hour={hour}/>}
                         </div>
 
                         {/*Toggle Button*/}
@@ -42,9 +64,12 @@ const Card = ({title, isLoading, isDeleting, setIsDeleting, roomId, applianceId}
                                 <input type="checkbox" value={''} className="sr-only peer"/>
                                 <div onClick={() => {
                                     setToggle(!toggle);
+                                    dispatch(updateApplianceStatus(roomId, applianceId, !toggle)).then(() => {
+                                        toast.success('Appliance status updated successfully!');
+                                    });
                                     setIsDeleting(false);
                                 }}
-                                     className={`w-11 h-6 rounded-full dark:bg-white peer-checked:after:translate-x-full peer-checked:after:duration-300 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-white bg-gray-200 peer-focus:outline-none peer`}></div>
+                                     className={`w-11 h-6 rounded-full dark:bg-white ${toggle ? 'bg-white after:translate-x-full after:duration-300 after:border-white' : ''} after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:rounded-full after:h-5 after:w-5 after:transition-all bg-gray-200 peer-focus:outline-none peer`}></div>
                             </label>
                             <h4 className={'text-lg font-semibold'}> {toggle ? "ON" : "OFF"} </h4>
                         </div>

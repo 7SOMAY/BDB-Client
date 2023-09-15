@@ -1,9 +1,9 @@
 import {useState, useEffect} from "react";
 
-const Timer = (props) => {
-    const [seconds, setSeconds] = useState(0);
-    const [minutes, setMinutes] = useState(0);
-    const [hours, setHours] = useState(0);
+const Timer = ({sec,min,hour}) => {
+    const [seconds, setSeconds] = useState(sec);
+    const [minutes, setMinutes] = useState(min);
+    const [hours, setHours] = useState(hour);
     let timer;
     useEffect(() => {
         // eslint-disable-next-line
