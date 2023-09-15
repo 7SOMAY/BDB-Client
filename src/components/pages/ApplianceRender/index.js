@@ -48,6 +48,7 @@ const AppliancesRender = ({roomName}) => {
                               applianceId={i._id}
                               applianceStatus={i.status}
                               isDeleting={isDeleting}
+                              deleting={deleting}
                               isUpdating={updating}
                               isAdding={adding}
                               setIsDeleting={setIsDeleting}
