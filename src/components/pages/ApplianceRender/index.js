@@ -49,6 +49,7 @@ const AppliancesRender = ({roomName}) => {
                               applianceStatus={i.status}
                               isDeleting={isDeleting}
                               isUpdating={updating}
+                              isAdding={adding}
                               setIsDeleting={setIsDeleting}
                             // duration={i.duration.slice(-1)[0].time}
                               startTime={i.startTime}
