@@ -40,7 +40,7 @@ const Card = ({
 
     return (
         <motion.div className={''}>
-            {isLoading || isUpdating || isAdding || isDeleting ?
+            {isLoading || isUpdating || isAdding?
                 <div
                     className={`animate-pulse hover:scale-[1.05] cursor-pointer mx-auto bg-gradient-to-r from-[#A66CFF] to-[#9C9EFE] text-white h-36 w-64 min-[420px]:h-40 min-[420px]:w-60 duration-300 shadow-lg rounded-2xl p-4 flex justify-between`}></div>
                 :
