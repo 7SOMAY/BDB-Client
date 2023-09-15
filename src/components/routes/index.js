@@ -15,8 +15,7 @@ import Dashboard from "../home/Dashboard";
 import ArchitecturalLayout from "../structure";
 import {useState} from "react";
 
-export default function PageRoutes({isAuthenticated = false, user, page}) {
-    const [adminCount, setAdminCount] = useState(0);
+export default function PageRoutes({isAuthenticated = false}) {
 
     return (
         <Routes>

@@ -1,8 +1,7 @@
+import ApplianceRender from "../ApplianceRender";
 const AnimeshHarshit = () => {
     return (
-        <div className={'py-20'}>
-            <h1>Animesh Harshit</h1>
-        </div>
+        <ApplianceRender roomName={"AnimeshHarshit"}/>
     )
 }
 

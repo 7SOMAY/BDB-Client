@@ -10,9 +10,7 @@ import CloseIcon from '@mui/icons-material/Close';
 const Home = () => {
     const dispatch = useDispatch();
     const {users} = useSelector((state) => state.user);
-
     const {adminCount} = useSelector((state) => state.user);
-
     let numberOfCards;
     if (users) numberOfCards = users.length;
     else numberOfCards = 3;
@@ -32,8 +30,6 @@ const Home = () => {
 
     const {user} = useSelector((state) => state.user);
 
-    // console.log(adminCount);
-
     function renderMember(member) {
         return (
             <MemberCard key={member._id}
@@ -50,7 +46,7 @@ const Home = () => {
 
     return (
         <>
-            <motion.div className="py-24 sm:p-6">
+            <motion.div className="py-32 sm:p-6">
                 {
                     isLoading ?
                         <>

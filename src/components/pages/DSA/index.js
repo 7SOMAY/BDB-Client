@@ -1,8 +1,9 @@
+import AnimeshHarshit from "../AnimeshHarshit";
+import ApplianceRender from "../ApplianceRender";
+
 const DSA = () => {
     return (
-        <div className={'py-20'}>
-            <h1>DSA Bhaggu</h1>
-        </div>
+        <ApplianceRender roomName={"DsaBhaggu"}/>
     )
 }
 

@@ -44,7 +44,7 @@ const MemberCard = ({name, isLoading, currUser, id, handleAdminDelete, userRole,
         <>
             {isDeleting && isHovering &&
                 <motion.h2
-                    className="bg-[#FDF7ED] flex border-[1px] gap-4 items-center border-[#e4d2a6] p-2 px-3 rounded-lg text-sm font-normal absolute text-[#34373B] top-20"
+                    className="bg-[#FDF7ED] flex border-[1px] gap-4 items-center border-[#e4d2a6] p-2 px-3 rounded-lg text-sm font-normal absolute text-[#34373B] top-16"
                     initial={{
                         opacity: 0,
                         y: -20
